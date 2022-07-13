@@ -41,7 +41,7 @@ const Box = ({...props}) => {
 const BoxInfo = ({...props}) => {
   let [desc, setDesc] = useState(props)
 
-  console.log(desc);
+  // console.log(desc);
 
   return (
     <div>{desc.item}</div>
