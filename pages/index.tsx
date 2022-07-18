@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import About from '../components/About'
 import FooterInfo from '../components/FooterInfo'
 import History from '../components/History'
@@ -10,7 +10,49 @@ import _s from '../styles/Home.module.css'
 const Home: NextPage = (props) => {
   let [prj, setPrj] = useState(props);
 
-  let [act, setAct] = useState();
+  const about = useRef(null);
+
+  let [act, setAct] = useState([
+    // mv
+    {
+      type: 'sticky',
+      heightMultiple: 5,
+      scrollHeight: 0,
+      obj: {}
+    },
+    // About
+    {
+      type: 'sticky',
+      heightMultiple: 5,
+      scrollHeight: 0,
+      obj: {}
+    },
+    // Skills
+    {
+      type: 'sticky',
+      heightMultiple: 5,
+      scrollHeight: 0,
+      obj: {}
+    },
+    // History
+    {
+      type: 'sticky',
+      heightMultiple: 5,
+      scrollHeight: 0,
+      obj: {}
+    },
+    // Projects
+    {
+      type: 'sticky',
+      heightMultiple: 5,
+      scrollHeight: 0,
+      obj: {}
+    },
+  ]);
+
+  useEffect(() => {
+    console.log(about.current);
+  }, [])
 
   return (
     <div>
@@ -20,7 +62,7 @@ const Home: NextPage = (props) => {
         <section className={_s.mv} />
 
         {/* 자기소개 */}
-        <section>
+        <section ref={about}>
           <About />
         </section>
 
@@ -29,7 +71,7 @@ const Home: NextPage = (props) => {
           <Skills />
         </section>
 
-        {/* 경험 */}
+        {/* 교육(학원및 대학)과 경험, 자격증 */}
         <section>
           <History />
         </section>
