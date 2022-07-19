@@ -1,6 +1,12 @@
+import { useEffect } from 'react'
 import _s from '../styles/About.module.css'
 
-export default function About() {
+export default function About(props: any) {
+  
+  useEffect(() => {
+    // console.log(Number.parseInt(props.scrollY))
+  })
+
   return (
     <div className={_s.about__wrapper}>
       <h2>🖐 웹 서비스로 가치와 감동을 전달하고 싶은 개발자, 윤희철입니다!</h2>
