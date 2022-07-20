@@ -20,7 +20,7 @@ const Home: NextPage = (props) => {
   const mv = useRef(null);
 
   // section group
-  const allSection = [
+  const allSection:Array<any> = [
     aboutSection,
     skillSection,
     historySection,
