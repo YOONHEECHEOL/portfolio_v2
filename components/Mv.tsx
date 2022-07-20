@@ -5,12 +5,13 @@ export default function Mv(props:any) {
 
   useEffect(() => {
     setYOff(props.scrollY);
-    console.log(yOff);
+    // console.log(yOff);
   })
 
   return (
     <div>
-
+      <span>Test1</span>
+      <span>Test2</span>
     </div>
   )
 }

@@ -9,7 +9,7 @@ import Mv from '../components/Mv'
 import _s from '../styles/Home.module.css'
 
 const Home: NextPage = (props) => {
-  let [prj, setPrj] = useState(props);
+  let [prj, setPrj] = useState(props);  
 
   // 각 section 불러오기
   const aboutSection = useRef(null);
@@ -29,6 +29,10 @@ const Home: NextPage = (props) => {
 
   // YOffset
   let [yOff, setYOff] = useState(0);
+  // sector
+  let [sector, setSector] = useState(0);
+  // sector YOffset
+  let [secYOff, setSecYOff] = useState(0);
 
   // layout data
   let [act, setAct] = useState([
@@ -79,15 +83,36 @@ const Home: NextPage = (props) => {
   // YOffset 값 받아오기
   const setYOffset = () => {
     window.addEventListener('scroll', () => {
-      setYOff(window.scrollY);
-      // console.log(yOff);      
+      let $scrollY = window.scrollY >> 0;
+
+      let a = $scrollY - (sector * 2 * 1200);
+      // let copy = act;
+      // copy[sector].scrollHeight = $scrollY - (sector * 2 * 1200);
+      // setAct(copy);
+
+      // sector 변경
+      if (yOff > (sector + 1) * 2 * 1200) {
+        setSector(sector++);
+        // a = yOff - (sector * 2 * 1200);
+      }
+
+      // sector 별 yOffset 값
+      setSecYOff(a);
+
+      // yOffset 값
+      setYOff($scrollY);
+      
+      // console.log('yOff : ' + yOff);      
+      // console.log('sector : ' + sector);
+      console.log('secYOff : ' + secYOff);
+      // console.log(`act[${sector}].scrollHeight : ` + act[sector].scrollHeight);
     })
   }
 
   // layout 만들기
   const setLayout = () => {
     allSection.forEach((sec, idx) => {
-      sec.current.style.height = `${act[idx].heightMultiple * 95}vh`;
+      sec.current.style.height = `${act[idx].heightMultiple * 1200}px`;
       // console.log(sec.current.)
     })
     // console.log(act[0].heightMultiple)
