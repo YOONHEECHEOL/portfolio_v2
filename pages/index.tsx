@@ -96,6 +96,7 @@ const Home: NextPage = (props) => {
         // a = yOff - (sector * 2 * 1200);
       }
 
+      // 
       // sector 별 yOffset 값
       setSecYOff(a);
 
